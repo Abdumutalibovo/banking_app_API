@@ -9,13 +9,13 @@ class ApiService{
       Response response=await https.get(Uri.parse("https://banking-api.free.mockoapp.net/user_cards"));
       if(response.statusCode==200){
         List json=jsonDecode(response.body) as List;
-
         List<UserData> userData=json.map((e) => UserData.fromJson(e)).toList();
         return userData;
       }else{
         throw Exception();
       }
     }catch(e){
+      print(e.toString());
       throw Exception();
     }
   }

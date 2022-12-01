@@ -9,7 +9,7 @@ class UserData {
   String cardCurrency;
   String expireData;
   String iconImage;
-  Colors colors;
+  ColorsModel colors;
 
   UserData({
     required this.id,
@@ -33,7 +33,7 @@ class UserData {
       cardCurrency: json['card_currency'] as String? ?? "",
       expireData: json['expire_date'] as String? ?? "",
       iconImage: json['icon_image'] as String? ?? "",
-      colors: Colors.fromJson(json['colors']),
+      colors: ColorsModel.fromJson(json['colors']),
     );
   }
 }

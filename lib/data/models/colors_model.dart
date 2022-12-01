@@ -1,11 +1,11 @@
-class Colors {
+class ColorsModel {
   String Acolor;
   String Bcolor;
 
-  Colors({required this.Acolor, required this.Bcolor});
+  ColorsModel({required this.Acolor, required this.Bcolor});
 
-  factory Colors.fromJson(Map<String, dynamic> json) {
-    return Colors(
+  factory ColorsModel.fromJson(Map<String, dynamic> json) {
+    return ColorsModel(
       Acolor: json['color_a'] as String? ?? "",
       Bcolor: json['color_b'] as String? ?? "",
     );
