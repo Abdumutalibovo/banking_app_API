@@ -2,22 +2,23 @@ import 'package:banking_app/data/models/user_data.dart';
 import 'package:banking_app/data/repositories/user_repository.dart';
 import 'package:flutter/foundation.dart';
 
-class UserModel extends ChangeNotifier{
+class UserModel extends ChangeNotifier {
 
-  UserModel({required this.userRepository});
+  UserModel({required UserRepository userRepository}) {
+    _userRepository = userRepository;
+  }
 
-  final UserRepository userRepository;
+  late UserRepository _userRepository;
 
-  bool isLoading=false;
+  bool isLoading = false;
 
-  UserData? userData;
+  List<UserData> userData = [];
 
-  void fetUserData()async{
-    isLoading=true;
+  void fetUserData() async {
+    isLoading = true;
     notifyListeners();
-    List<UserData> userData= await userRepository.getUser();
-    userData=userData;
-    isLoading=false;
+    userData = await _userRepository.getUser();
+    isLoading = false;
     notifyListeners();
   }
 }

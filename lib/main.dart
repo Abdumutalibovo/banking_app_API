@@ -1,4 +1,5 @@
 import 'package:banking_app/data/repositories/user_repository.dart';
+import 'package:banking_app/data/services/api_service.dart';
 import 'package:banking_app/ui/home_page.dart';
 import 'package:banking_app/view_model/sample_model.dart';
 import 'package:banking_app/view_model/user_model.dart';
@@ -6,11 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  UserRepository userRepository = UserRepository(apiService: ApiService());
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => UserModel(userRepository: UserRepository()),
+          create: (context) => UserModel(userRepository: userRepository),
         ),
         ChangeNotifierProvider(create: (context) => SampleModel()),
       ],
